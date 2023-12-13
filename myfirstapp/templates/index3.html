@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="static/globals1.css" />
+    <link rel="stylesheet" href="static/style3.css" />
+    <title>舞蹈</title>
+  </head>
+  <body>
+    <div class="desktop">
+      <div class="div">
+        <div class="overlap-group">
+          <img class="yvette-de-wit" src="static/img/rainier-ridao-grdpppkczdy-unsplash-1.png" />
+          <div class="text-wrapper">舞蹈</div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">節目名稱</th>
+              <th scope="col">節目資訊</th>
+              <th scope="col">票價</th>
+              <th scope="col">連結</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for data3 in data %}
+              <tr>
+                <!-- <th scope="row">1</th> -->
+                <td>{{ data3.title }}</td>
+                <td>
+                  時間: {{ data3.showInfo[0].time }}<br />
+                  地址: {{ data3.showInfo[0].location }}<br />
+                  地點: {{ data3.showInfo[0].locationName }}<br />
+                  起: {{ data3.startDate }}<br />
+                  迄: {{ data3.endDate }}
+                </td>
+                <td>{{ data3.showInfo[0].price }}</td>
+                <td>
+                    {% if data3.webSales %}
+                    <a href="{{ data3.webSales }}" target="_blank">購票連結</a>
+                    {% else %}
+                    None
+                    {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
